@@ -3,7 +3,7 @@ from MailOperations import MailOperations
 from Page import Page
 
 
-class Page2(Page):
+class InboxPage(Page):
     def __init__(self, *args, **kwargs):
         Page.__init__(self, *args, **kwargs)
         file = ""

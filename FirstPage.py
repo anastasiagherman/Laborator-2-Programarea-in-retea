@@ -5,11 +5,12 @@ from tkinter import END, filedialog
 from tkinter import messagebox
 from MailOperations import MailOperations
 from Page import Page
+from tkinter import *
 
 file_paths = []
 
 
-class Page1(Page):
+class FirstPage(Page):
     def __init__(self, *args, **kwargs):
         Page.__init__(self, *args, **kwargs)
 
@@ -26,6 +27,7 @@ class Page1(Page):
                                                                                       message,
                                                                                       file_paths)
 
+            tk.messagebox.showinfo("Message", "Message was sent!")
             recipient_entry.delete(0, END)
             subject_entry.delete(0, END)
             path.delete(0, END)
@@ -53,23 +55,25 @@ class Page1(Page):
         recipient_var = tk.StringVar()
         recipient_entry = tk.Entry(self, width="35", textvariable=recipient_var)
 
+
         # Subject
         label2 = tk.Label(self, text="Subject:", bg="light blue")
         label2.config(font=("Consolas", 15))
         subject_var = tk.StringVar()
         subject_entry = tk.Entry(self, width="50", textvariable=subject_var)
-
         # Attachments
 
         # Label
         label3 = tk.Label(self, text="Attachments:", bg="light blue")
         label3.config(font=("Consolas", 15))
 
+
+
         # Entry to display path to file
         path = tk.Listbox(self, width=70, height=5)
-
         # Button to call file Dialog
         select = tk.Button(self, text="Select File < 2MB", command=get_path)
+
 
         # Message
         label4 = tk.Label(self, text="Message:", bg="light blue")
@@ -85,9 +89,9 @@ class Page1(Page):
         recipient_entry.pack(expand=True)
         label2.pack(expand=True)
         subject_entry.pack(expand=True)
+        label4.pack(expand=True)
+        message_text.pack(expand=True, ipady=20)
         label3.pack(expand=True)
         path.pack(expand=True)
         select.pack(expand=True)
-        label4.pack(expand=True)
-        message_text.pack(expand=True, ipady=30)
         send.pack(expand=True)
